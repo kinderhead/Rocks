@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/radioactive.cs" type="Script" id=1]
+[ext_resource path="res://scripts/Background.cs" type="Script" id=2]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Background" type="Polygon2D" parent="."]
+position = Vector2( 0, 8 )
+scale = Vector2( 2000, 2000 )
+color = Color( 0.313726, 0.152941, 0.152941, 1 )
+polygon = PoolVector2Array( -65, -136, 90, -138, 93, 72, -67, 71 )
+script = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 50, 50 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PoolVector2Array( -40, -72, 33, -79, 74, 30, -31, 33 )
+
+[node name="Tween" type="Tween" parent="."]

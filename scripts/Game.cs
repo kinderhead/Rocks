@@ -23,7 +23,6 @@ public class Game : Node2D
     {
         Dating = true;
         var rock = Rock.Instance<Rock>();
-        RockColor = rock.Color;
         AddChild(rock);
     }
 
@@ -35,6 +34,6 @@ public class Game : Node2D
 
         await ToSignal(GetTree().CreateTimer(2), "timeout");
 
-        GD.Print(camera.Zoom);
+        GetTree().ChangeScene("res://radioactive.tscn");
     }
 }
