@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Geology project 3 atom icon.png" type="Texture" id=1]
+[ext_resource path="res://Roboto-Black.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scripts/atom.cs" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 46
+font_data = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite"]
+modulate = Color( 0.63, 0.63, 0.63, 1 )
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -114.5
+margin_right = -72.0
+margin_bottom = -59.5
+custom_fonts/font = SubResource( 1 )
+text = "Pb"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
