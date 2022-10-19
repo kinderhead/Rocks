@@ -16,7 +16,7 @@ public class Rock : Polygon2D
 
     public override void _Ready()
     {
-        Color = Colors[new Random().Next(Colors.Length - 1)];
+        Color = Colors[new Random().Next(Colors.Length)];
         Game.RockColor = Color;
     }
 

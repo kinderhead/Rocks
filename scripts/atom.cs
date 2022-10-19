@@ -18,13 +18,11 @@ public struct AtomType {
 
 public class atom : Sprite
 {
-    [Export]
     public static AtomType[][] TypePairs = {
         new AtomType[]{AtomType.K, AtomType.Ar},
         new AtomType[]{AtomType.U, AtomType.Pb}
     };
-
-    [Export]
+    
     public AtomType AtomType;
 
     public override void _Ready()
