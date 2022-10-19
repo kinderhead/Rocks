@@ -9,16 +9,23 @@ public struct AtomType {
         Name = name;
         Color = color;
     }
+
+    public static AtomType K = new AtomType("K", new Color(.63f, .63f, .63f));
+    public static AtomType Ar = new AtomType("Ar", new Color(.71f, .12f, .4f));
+    public static AtomType U = new AtomType("U", new Color(.38f, .72f, .4f));
+    public static AtomType Pb = new AtomType("Pb", new Color(.35f, .35f, .35f));
 }
 
 public class atom : Sprite
 {
     [Export]
-    public AtomType[] AtomTypes = {
-        new AtomType("K", new Color(.63f, .63f, .63f))
+    public static AtomType[][] TypePairs = {
+        new AtomType[]{AtomType.K, AtomType.Ar},
+        new AtomType[]{AtomType.U, AtomType.Pb}
     };
 
-    private AtomType atomType;
+    [Export]
+    public AtomType AtomType;
 
     public override void _Ready()
     {
@@ -32,6 +39,11 @@ public class atom : Sprite
 
     public void SetAtomType(AtomType type) {
         Modulate = type.Color;
-        GetNode<Label>("Label");
+        var label = GetNode<Label>("Label");
+
+        label.Text = type.Name;
+        label.Modulate = new Color(1 - type.Color.r, 1 - type.Color.g, 1 - type.Color.b);
+
+        AtomType = type;
     }
 }

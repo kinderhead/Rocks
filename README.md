@@ -16,3 +16,7 @@ If I have time, there will be a cross section of an arbitrary part of the Earth'
 Hart, Amalyah. What Is Radiometric Dating? Cosmos Magazine, 14 Apr. 2021, https://cosmosmagazine.com/earth/earth-sciences/what-is-radiometric-dating/.
 
 This source is used for radiometric dating. More specifically for the different elements used in radiometric dating.
+
+Geologic Time: Radiometric Time Scale. USGS, 13 June 2001, https://pubs.usgs.gov/gip/geotime/radiometric.html.
+
+This source is used for the formula for calculating the age of a rock based on radioactivity.

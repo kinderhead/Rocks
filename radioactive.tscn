@@ -17,7 +17,4 @@ script = ExtResource( 2 )
 current = true
 zoom = Vector2( 50, 50 )
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PoolVector2Array( -40, -72, 33, -79, 74, 30, -31, 33 )
-
 [node name="Tween" type="Tween" parent="."]

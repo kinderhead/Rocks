@@ -5,6 +5,8 @@ public class radioactive : Node2D
 {
     public async override void _Ready()
     {
+        Setup();
+
         GetNode<Tween>("Tween").InterpolateProperty(GetNode<Camera2D>("Camera2D"), "zoom", GetNode<Camera2D>("Camera2D").Zoom, new Vector2(1, 1), 2, Tween.TransitionType.Quint, Tween.EaseType.Out);
         GetNode<Tween>("Tween").Start();
 
@@ -15,6 +17,15 @@ public class radioactive : Node2D
 
     public override void _Process(float delta)
     {
-        
+
+    }
+
+    public void Setup()
+    {
+        var rand = new Random();
+
+        AtomType[] pair = atom.TypePairs[rand.Next(atom.TypePairs.Length - 1)];
+
+        float ratio = 
     }
 }
