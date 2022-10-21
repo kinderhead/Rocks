@@ -8,6 +8,7 @@ public class radioactive : Node2D
 
     private int atom1;
     private int atom2;
+    private double constant;
 
     public async override void _Ready()
     {
@@ -29,6 +30,12 @@ public class radioactive : Node2D
         var rand = new Random();
 
         AtomType[] pair = atom.TypePairs[rand.Next(atom.TypePairs.Length)];
+
+        if (pair[0] == AtomType.U) {
+            constant = atom.UraniumDecayConstant;
+        } else {
+            constant = atom.PotassiumDecayConstant;
+        }
 
         float ratio = (float) rand.Next(25, 50) / 100f;
 
@@ -57,5 +64,17 @@ public class radioactive : Node2D
         atom.SetAtomType(type);
         atom.Position = new Vector2(rand.Next(30, 750) - 500, rand.Next(30, 550) - 250);
         AddChild(atom);
+    }
+
+    public void Finish() {
+        int amount1 = (int) GetNode<SpinBox>("Gui/Radioactive").Value;
+        int amount2 = (int) GetNode<SpinBox>("Gui/Stable").Value;
+
+        double age = CalculateAge(amount1, amount2, constant);
+        GD.Print("Guess | atom1: " + amount1 + ", atom2: " + amount2 + ", age: " + age + ", constant: " + constant);
+    }
+
+    public static double CalculateAge(int atom1, int atom2, double constant) {
+        return (1/constant) * Math.Log(1 + (atom2/atom1));
     }
 }
