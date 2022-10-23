@@ -66,15 +66,26 @@ public class radioactive : Node2D
         AddChild(atom);
     }
 
-    public void Finish() {
+    public async void Finish() {
         int amount1 = (int) GetNode<SpinBox>("Gui/Radioactive").Value;
         int amount2 = (int) GetNode<SpinBox>("Gui/Stable").Value;
 
         double age = CalculateAge(amount1, amount2, constant);
         GD.Print("Guess | atom1: " + amount1 + ", atom2: " + amount2 + ", age: " + age + ", constant: " + constant);
+
+        if (amount1 != atom1 || amount2 != atom2) {
+            GetNode<Label>("Gui/Result").Text = "Incorrect, try again";
+            return;
+        }
+        
+        GetNode<Label>("Gui/Result").Text = "Correct, this rock is about " + String.Format("{0:n0}", age) + " years old.";
     }
 
-    public static double CalculateAge(int atom1, int atom2, double constant) {
-        return (1/constant) * Math.Log(1 + (atom2/atom1));
+    public static double CalculateAge(double atom1, double atom2, double constant) {
+        GD.Print(atom2/atom1);
+        GD.Print(Math.Log(atom2/atom1));
+        GD.Print(constant * Math.Log(atom2/atom1));
+        GD.Print(Math.Log(.5));
+        return (constant * Math.Log(atom2/atom1)) / Math.Log(.5);
     }
 }

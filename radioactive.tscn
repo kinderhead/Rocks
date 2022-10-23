@@ -61,4 +61,11 @@ margin_top = 84.0
 margin_right = 57.0
 margin_bottom = 108.0
 
+[node name="Result" type="Label" parent="Gui"]
+margin_left = -275.0
+margin_top = 163.0
+margin_right = 48.0
+margin_bottom = 177.0
+align = 2
+
 [connection signal="pressed" from="Gui/Button" to="." method="Finish"]

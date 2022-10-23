@@ -46,8 +46,8 @@ public class atom : Sprite
         new AtomType[]{AtomType.U, AtomType.Pb}
     };
 
-    public static double UraniumDecayConstant = Math.Log(2) / 4500000000;
-    public static double PotassiumDecayConstant = Math.Log(2) / 1300000000;
+    public static double UraniumDecayConstant = 4500000000;
+    public static double PotassiumDecayConstant = 1300000000;
 
     public AtomType AtomType;
 

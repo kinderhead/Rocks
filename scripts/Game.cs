@@ -29,7 +29,7 @@ public class Game : Node2D
     public async void Pressed() {
         var camera = GetNode<Camera2D>("Camera2D");
 
-        GetNode<Tween>("Tween").InterpolateProperty(camera, "zoom", camera.Zoom, new Vector2(.1f, .1f), 2, Tween.TransitionType.Quint, Tween.EaseType.InOut);
+        GetNode<Tween>("Tween").InterpolateProperty(camera, "zoom", camera.Zoom, new Vector2(.001f, .001f), 2, Tween.TransitionType.Quint, Tween.EaseType.InOut);
         GetNode<Tween>("Tween").Start();
 
         await ToSignal(GetTree().CreateTimer(2), "timeout");
