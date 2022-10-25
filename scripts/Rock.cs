@@ -3,7 +3,8 @@ using System;
 using System.Collections.Generic;
 
 public enum RockTypes {
-    RADIOACTIVE
+    RADIOACTIVE,
+    FOSSIL
 }
 
 public class Rock : Polygon2D
@@ -16,8 +17,20 @@ public class Rock : Polygon2D
 
     public override void _Ready()
     {
-        Color = Colors[new Random().Next(Colors.Length)];
-        Game.RockColor = Color;
+        if (!Game.Dating) {
+            GD.Print("Creating new rock " + new Random().Next(0, 2));
+            Color = Colors[new Random().Next(Colors.Length)];
+            
+            if (new Random().Next(0, 2) == 0) {
+                Type = RockTypes.RADIOACTIVE;
+            }
+            else {
+                Type = RockTypes.FOSSIL;
+            }
+
+            Game.RockColor = Color;
+            Game.RockType = Type;
+        }
     }
 
     public override void _Process(float delta)

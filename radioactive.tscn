@@ -68,4 +68,12 @@ margin_right = 48.0
 margin_bottom = 177.0
 align = 2
 
+[node name="Next" type="Button" parent="Gui"]
+margin_left = -21.0
+margin_top = 182.0
+margin_right = 55.0
+margin_bottom = 202.0
+text = "Leave"
+
 [connection signal="pressed" from="Gui/Button" to="." method="Finish"]
+[connection signal="pressed" from="Gui/Next" to="." method="NextRock"]

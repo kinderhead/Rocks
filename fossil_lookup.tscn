@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/fossil_lookup.cs" type="Script" id=1]
+[ext_resource path="res://textures/trilobite.png" type="Texture" id=2]
+[ext_resource path="res://textures/zamia.png" type="Texture" id=3]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Fossil" type="Sprite" parent="."]
+position = Vector2( 253, 270 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Container" type="Control" parent="."]
+margin_left = 899.0
+margin_top = 8.0
+margin_right = 1016.0
+margin_bottom = 327.0
+
+[node name="Button" type="Button" parent="Container"]
+margin_left = 64.0
+margin_top = 4.0
+margin_right = 113.0
+margin_bottom = 24.0
+text = "Leave"
+
+[node name="Button2" type="Button" parent="Container"]
+visible = false
+margin_left = -11.0
+margin_top = 52.0
+margin_right = 114.0
+margin_bottom = 72.0
+text = "Correct, next rock"
+
+[node name="Trilobite" type="Sprite" parent="."]
+position = Vector2( 709, 92 )
+scale = Vector2( 0.21431, 0.21431 )
+texture = ExtResource( 2 )
+
+[node name="TrilobiteButton" type="Button" parent="."]
+margin_left = 593.0
+margin_top = 189.0
+margin_right = 832.0
+margin_bottom = 209.0
+text = "Trilobite: 521-252 million years ago"
+
+[node name="ZamiaButton" type="Button" parent="."]
+margin_left = 593.0
+margin_top = 480.0
+margin_right = 832.0
+margin_bottom = 500.0
+text = "Zamia: >63 million years ago"
+
+[node name="Zamia" type="Sprite" parent="."]
+position = Vector2( 710, 336 )
+scale = Vector2( 0.236456, 0.236456 )
+texture = ExtResource( 3 )
+
+[connection signal="pressed" from="Container/Button" to="." method="Leave"]
+[connection signal="pressed" from="Container/Button2" to="." method="Leave"]
+[connection signal="pressed" from="TrilobiteButton" to="." method="TrilobiteButton"]
+[connection signal="pressed" from="ZamiaButton" to="." method="ZamiaButton"]

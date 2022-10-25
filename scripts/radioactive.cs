@@ -12,7 +12,12 @@ public class radioactive : Node2D
 
     public async override void _Ready()
     {
-        Setup();
+        if (Game.RockType == RockTypes.RADIOACTIVE) {
+            Setup();
+        }
+        else {
+            GetNode<Button>("Gui/Button").Disabled = true;
+        }
 
         GetNode<Tween>("Tween").InterpolateProperty(GetNode<Camera2D>("Camera2D"), "zoom", GetNode<Camera2D>("Camera2D").Zoom, new Vector2(1, 1), 2, Tween.TransitionType.Quint, Tween.EaseType.Out);
         GetNode<Tween>("Tween").Start();
@@ -66,7 +71,7 @@ public class radioactive : Node2D
         AddChild(atom);
     }
 
-    public async void Finish() {
+    public void Finish() {
         int amount1 = (int) GetNode<SpinBox>("Gui/Radioactive").Value;
         int amount2 = (int) GetNode<SpinBox>("Gui/Stable").Value;
 
@@ -79,13 +84,18 @@ public class radioactive : Node2D
         }
         
         GetNode<Label>("Gui/Result").Text = "Correct, this rock is about " + String.Format("{0:n0}", age) + " years old.";
+        Game.Dating = false;
+    }
+
+    public void NextRock() {
+        GetTree().ChangeScene("main.tscn");
     }
 
     public static double CalculateAge(double atom1, double atom2, double constant) {
-        GD.Print(atom2/atom1);
+        GD.Print(atom2+atom1);
         GD.Print(Math.Log(atom2/atom1));
         GD.Print(constant * Math.Log(atom2/atom1));
         GD.Print(Math.Log(.5));
-        return (constant * Math.Log(atom2/atom1)) / Math.Log(.5);
+        return ((constant * Math.Log(atom1/(atom2+atom1))) / Math.Log(.5));
     }
 }
